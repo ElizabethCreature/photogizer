@@ -1,0 +1,18 @@
+Dev Notes
+
+10/19/23 - Hours Worked: 1
+Current State of Photogizer:
+Reads a hardcoded image file, detects metadata, and prints it if it exists.
+
+Discovered copied photos get their "created date" replaced.
+Learned to access metadata with Python Pillow.
+Learned that some services, including discord, erase metadata. Gmail does not.
+
+Photogizer first goal:
+Print most accurate "created date" info available from a hardcoded image. Use metadata if possible, else, use the system's created date. 
+Second goal: 
+Detect photos in a directory given by input. 
+Third goal:
+Combine first two steps, to create a program that reads a directory (given by user input) and prints the most accurate possible created date for each image in the directory. 
+Go from there. 
+
