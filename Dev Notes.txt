@@ -16,3 +16,38 @@ Third goal:
 Combine first two steps, to create a program that reads a directory (given by user input) and prints the most accurate possible created date for each image in the directory. 
 Go from there. 
 
+semi working code:
+from PIL import Image
+from PIL.ExifTags import TAGS
+import os.path, time
+import datetime
+import pathlib
+import filetype
+
+file = pathlib.Path('pics/Clara.jpg')
+
+def check_type():
+    if filetype.is_image(file):
+        return True
+    else:
+        return False
+
+def get_date():
+    img = Image.open(file)
+    exifdata = img._getexif()
+    if exifdata:
+        date = exifdata.get(306)
+        return date
+    else:
+        ctime = datetime.datetime.fromtimestamp(file.stat().st_ctime, tz=datetime.timezone.utc)
+        return ctime 
+
+directory = "pics"
+ 
+# iterate over files in
+# that directory
+for filename in os.listdir(directory):
+    f = os.path.join(directory, filename)
+    print(f"Image name {filename}")
+
+
